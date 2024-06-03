@@ -1,7 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 
 export default function TaskList() {
+  // obtengo los datos de mi estado global de redux 
+  const stateTask = useSelector(state => state.tasks)
+
   return (
-    <div>TaskList</div>
+    <>
+      {stateTask.map((task) => (
+        <div key={task.id}>
+          <h2>{task.title}</h2>
+          <p>{task.description}</p>
+        </div>
+      ))}
+    </>
   )
 }
