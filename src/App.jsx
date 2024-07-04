@@ -1,14 +1,21 @@
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <TaskList />
+  }, {
+    path: '/create-task',
+    element: <TaskForm />
+  }
+])
 
 function App() {
   return (
-    <>
-      <h2>Mi lista de tareas</h2>
-      <TaskForm />
-      <TaskList />
-    </>
+      <RouterProvider router={router} />
   )
 }
 

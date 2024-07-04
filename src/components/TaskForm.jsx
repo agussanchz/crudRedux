@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addTask } from '../features/tasks/taskSlice'
+import { useNavigate } from 'react-router-dom'
 
 export default function TaskForm() {
   // estado que almacena el contenido de mis tareas
@@ -11,6 +12,8 @@ export default function TaskForm() {
 
   // metodo dispatch de redux 
   const dispatch = useDispatch()
+  // metodo navigate de react router dom
+  const navigate = useNavigate()
 
   // funcion para obtener datos del formulario
   const handleChange = (e) => {
@@ -24,6 +27,7 @@ export default function TaskForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(addTask(task))
+    navigate('/')
   }
 
   return (
